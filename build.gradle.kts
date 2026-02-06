@@ -22,8 +22,9 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
 
-    // Web
+    // Web + Validation
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // JPA + MySQL
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

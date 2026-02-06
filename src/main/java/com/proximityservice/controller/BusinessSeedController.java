@@ -2,6 +2,7 @@ package com.proximityservice.controller;
 
 import com.proximityservice.dto.BusinessSeedRequest;
 import com.proximityservice.service.BusinessSeedService;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class BusinessSeedController {
     private final BusinessSeedService seedService;
 
     @PostMapping("/v1/businesses/seed")
-    public ResponseEntity<Map<String, Integer>> seed(@RequestBody List<BusinessSeedRequest> requests) {
+    public ResponseEntity<Map<String, Integer>> seed(@RequestBody @Valid List<BusinessSeedRequest> requests) {
         int createdCount = seedService.seed(requests);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(Map.of("created_count", createdCount));

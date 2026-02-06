@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-02-06T07:03:33.824Z",
+  "lastUpdated": "2026-02-06T07:28:29.389Z",
   "activeFeatures": [
     "proximityservice",
     "domain",
@@ -74,7 +74,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T06:46:43.888Z",
-        "lastUpdated": "2026-02-06T06:49:47.343Z"
+        "lastUpdated": "2026-02-06T07:28:10.514Z"
       },
       "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/dto/BusinessSeedRequest.java"
     },
@@ -87,9 +87,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T06:46:45.626Z",
-        "lastUpdated": "2026-02-06T07:03:33.824Z"
+        "lastUpdated": "2026-02-06T07:28:29.389Z"
       },
-      "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/exception/InvalidParameterException.java"
+      "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/exception/GlobalExceptionHandler.java"
     },
     "service": {
       "phase": "do",
@@ -113,9 +113,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T06:47:43.778Z",
-        "lastUpdated": "2026-02-06T06:48:54.164Z"
+        "lastUpdated": "2026-02-06T07:28:19.614Z"
       },
-      "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/test/java/com/proximityservice/controller/NearbySearchControllerTest.java"
+      "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/controller/BusinessSeedController.java"
     }
   },
   "pipeline": {
@@ -126,7 +126,7 @@
   "session": {
     "startedAt": "2026-02-05T23:33:20.735Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-02-06T07:03:33.824Z"
+    "lastActivity": "2026-02-06T07:28:29.389Z"
   },
   "history": [
     {
@@ -269,6 +269,30 @@
     },
     {
       "timestamp": "2026-02-06T07:03:33.824Z",
+      "feature": "exception",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-06T07:28:10.515Z",
+      "feature": "dto",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-06T07:28:15.981Z",
+      "feature": "controller",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-06T07:28:19.614Z",
+      "feature": "controller",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-06T07:28:29.389Z",
       "feature": "exception",
       "phase": "do",
       "action": "updated"
