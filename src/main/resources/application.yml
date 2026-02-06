@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: proximity-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/proximity
+    username: app
+    password: app
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  data:
+    redis:
+      host: localhost
+      port: 6379

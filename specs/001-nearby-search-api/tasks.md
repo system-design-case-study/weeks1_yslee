@@ -23,11 +23,11 @@
 
 **Purpose**: Spring Boot 프로젝트 초기화 및 인프라 설정
 
-- [ ] T001 Create `build.gradle.kts` with Spring Boot 3.4.x, Spring Data Redis, Spring Data JPA, MySQL Connector, Testcontainers dependencies
-- [ ] T002 Create `docker-compose.yml` with MySQL 8.0 and Redis 7 services
-- [ ] T003 [P] Create `src/main/resources/application.yml` with MySQL, Redis, JPA configuration
-- [ ] T004 [P] Create `src/main/java/com/proximityservice/ProximityServiceApplication.java` with `@SpringBootApplication`
-- [ ] T005 [P] Create `settings.gradle.kts` with project name
+- [x] T001 Create `build.gradle.kts` with Spring Boot 3.4.x, Spring Data Redis, Spring Data JPA, MySQL Connector, Testcontainers dependencies
+- [x] T002 Create `docker-compose.yml` with MySQL 8.0 and Redis 7 services
+- [x] T003 [P] Create `src/main/resources/application.yml` with MySQL, Redis, JPA configuration
+- [x] T004 [P] Create `src/main/java/com/proximityservice/ProximityServiceApplication.java` with `@SpringBootApplication`
+- [x] T005 [P] Create `settings.gradle.kts` with project name
 
 ---
 
@@ -37,13 +37,13 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Create Business JPA entity in `src/main/java/com/proximityservice/domain/Business.java` — UUID PK, name, address, latitude, longitude, category, phone, hours, created_at, updated_at per data-model.md
-- [ ] T007 Create BusinessRepository (JPA) in `src/main/java/com/proximityservice/repository/BusinessRepository.java` — `findAllById(List<String>)` 메서드 포함
-- [ ] T008 Create RedisConfig with `StringRedisTemplate` bean in `src/main/java/com/proximityservice/config/RedisConfig.java`
-- [ ] T009 Create BusinessGeoRepository in `src/main/java/com/proximityservice/repository/BusinessGeoRepository.java` — `GeoOperations`를 사용한 `add(id, lng, lat)`, `searchNearby(lng, lat, radius)` 메서드
-- [ ] T010 [P] Create ErrorResponse DTO in `src/main/java/com/proximityservice/dto/ErrorResponse.java` — error, message, details fields per OpenAPI spec
-- [ ] T011 [P] Create InvalidParameterException in `src/main/java/com/proximityservice/exception/InvalidParameterException.java`
-- [ ] T012 Create GlobalExceptionHandler in `src/main/java/com/proximityservice/exception/GlobalExceptionHandler.java` — `@ControllerAdvice`, InvalidParameterException → 400 ErrorResponse 매핑
+- [x] T006 Create Business JPA entity in `src/main/java/com/proximityservice/domain/Business.java` — UUID PK, name, address, latitude, longitude, category, phone, hours, created_at, updated_at per data-model.md
+- [x] T007 Create BusinessRepository (JPA) in `src/main/java/com/proximityservice/repository/BusinessRepository.java` — `findAllById(List<String>)` 메서드 포함
+- [x] T008 Create RedisConfig with `StringRedisTemplate` bean in `src/main/java/com/proximityservice/config/RedisConfig.java`
+- [x] T009 Create BusinessGeoRepository in `src/main/java/com/proximityservice/repository/BusinessGeoRepository.java` — `GeoOperations`를 사용한 `add(id, lng, lat)`, `searchNearby(lng, lat, radius)` 메서드
+- [x] T010 [P] Create ErrorResponse DTO in `src/main/java/com/proximityservice/dto/ErrorResponse.java` — error, message, details fields per OpenAPI spec
+- [x] T011 [P] Create InvalidParameterException in `src/main/java/com/proximityservice/exception/InvalidParameterException.java`
+- [x] T012 Create GlobalExceptionHandler in `src/main/java/com/proximityservice/exception/GlobalExceptionHandler.java` — `@ControllerAdvice`, InvalidParameterException → 400 ErrorResponse 매핑
 
 **Checkpoint**: Foundation ready - Entity, Repository, Redis GEO, 에러 처리 인프라 완료
 
@@ -57,22 +57,22 @@
 
 ### Implementation for User Story 1
 
-- [ ] T013 [P] [US1] Create BusinessSearchResult DTO in `src/main/java/com/proximityservice/dto/BusinessSearchResult.java` — id, name, address, latitude, longitude, distance_m, category fields
-- [ ] T014 [P] [US1] Create NearbySearchResponse DTO in `src/main/java/com/proximityservice/dto/NearbySearchResponse.java` — total, businesses(List), message fields
-- [ ] T015 [US1] Implement NearbySearchService in `src/main/java/com/proximityservice/service/NearbySearchService.java` — Redis GEOSEARCH → MySQL findAllById → BusinessSearchResult 매핑, 거리순 정렬
-- [ ] T016 [US1] Implement NearbySearchController `GET /v1/search/nearby` in `src/main/java/com/proximityservice/controller/NearbySearchController.java` — latitude, longitude, radius(default 5000) 파라미터 바인딩
+- [x] T013 [P] [US1] Create BusinessSearchResult DTO in `src/main/java/com/proximityservice/dto/BusinessSearchResult.java` — id, name, address, latitude, longitude, distance_m, category fields
+- [x] T014 [P] [US1] Create NearbySearchResponse DTO in `src/main/java/com/proximityservice/dto/NearbySearchResponse.java` — total, businesses(List), message fields
+- [x] T015 [US1] Implement NearbySearchService in `src/main/java/com/proximityservice/service/NearbySearchService.java` — Redis GEOSEARCH → MySQL findAllById → BusinessSearchResult 매핑, 거리순 정렬
+- [x] T016 [US1] Implement NearbySearchController `GET /v1/search/nearby` in `src/main/java/com/proximityservice/controller/NearbySearchController.java` — latitude, longitude, radius(default 5000) 파라미터 바인딩
 
 ### Data Seeding (US1에서 테스트하려면 데이터가 필요)
 
-- [ ] T017 [P] [US1] Create BusinessSeedRequest DTO in `src/main/java/com/proximityservice/dto/BusinessSeedRequest.java` — name, address, latitude, longitude, category, phone, hours fields with validation
-- [ ] T018 [US1] Implement BusinessSeedService in `src/main/java/com/proximityservice/service/BusinessSeedService.java` — MySQL INSERT + Redis GEOADD 동시 수행
-- [ ] T019 [US1] Implement BusinessSeedController `POST /v1/businesses/seed` in `src/main/java/com/proximityservice/controller/BusinessSeedController.java` — 배열 입력, 201 응답 with created_count
+- [x] T017 [P] [US1] Create BusinessSeedRequest DTO in `src/main/java/com/proximityservice/dto/BusinessSeedRequest.java` — name, address, latitude, longitude, category, phone, hours fields with validation
+- [x] T018 [US1] Implement BusinessSeedService in `src/main/java/com/proximityservice/service/BusinessSeedService.java` — MySQL INSERT + Redis GEOADD 동시 수행
+- [x] T019 [US1] Implement BusinessSeedController `POST /v1/businesses/seed` in `src/main/java/com/proximityservice/controller/BusinessSeedController.java` — 배열 입력, 201 응답 with created_count
 
 ### Test for User Story 1
 
-- [ ] T020 [US1] Create BusinessGeoRepositoryTest in `src/test/java/com/proximityservice/repository/BusinessGeoRepositoryTest.java` — Testcontainers Redis, GEOADD/GEOSEARCH 동작 검증
-- [ ] T021 [US1] Create NearbySearchServiceTest in `src/test/java/com/proximityservice/service/NearbySearchServiceTest.java` — 검색 결과 거리순 정렬, 반경 내 결과만 포함 검증
-- [ ] T022 [US1] Create NearbySearchControllerTest in `src/test/java/com/proximityservice/controller/NearbySearchControllerTest.java` — MockMvc로 GET /v1/search/nearby 200 응답, 기본 반경 5000m 적용 검증
+- [x] T020 [US1] Create BusinessGeoRepositoryTest in `src/test/java/com/proximityservice/repository/BusinessGeoRepositoryTest.java` — Testcontainers Redis, GEOADD/GEOSEARCH 동작 검증
+- [x] T021 [US1] Create NearbySearchServiceTest in `src/test/java/com/proximityservice/service/NearbySearchServiceTest.java` — 검색 결과 거리순 정렬, 반경 내 결과만 포함 검증
+- [x] T022 [US1] Create NearbySearchControllerTest in `src/test/java/com/proximityservice/controller/NearbySearchControllerTest.java` — MockMvc로 GET /v1/search/nearby 200 응답, 기본 반경 5000m 적용 검증
 
 **Checkpoint**: 검색 API + 시딩 API 동작. curl로 데이터 시딩 후 검색 가능. MVP 완료.
 
@@ -86,8 +86,8 @@
 
 ### Implementation for User Story 2
 
-- [ ] T023 [US2] Update NearbySearchService in `src/main/java/com/proximityservice/service/NearbySearchService.java` — 검색 결과 0건 시 반경 확대 안내 message 필드 설정
-- [ ] T024 [US2] Create NearbySearchControllerTest empty result case in `src/test/java/com/proximityservice/controller/NearbySearchControllerTest.java` — 결과 0건 시 message 포함 검증
+- [x] T023 [US2] Update NearbySearchService in `src/main/java/com/proximityservice/service/NearbySearchService.java` — 검색 결과 0건 시 반경 확대 안내 message 필드 설정
+- [x] T024 [US2] Create NearbySearchControllerTest empty result case in `src/test/java/com/proximityservice/controller/NearbySearchControllerTest.java` — 결과 0건 시 message 포함 검증
 
 **Checkpoint**: 결과 없음 시 안내 메시지 반환. US1과 독립적으로 검증 가능.
 
@@ -101,9 +101,9 @@
 
 ### Implementation for User Story 3
 
-- [ ] T025 [US3] Add input validation to NearbySearchController in `src/main/java/com/proximityservice/controller/NearbySearchController.java` — latitude(-90~90), longitude(-180~180), radius(1~20000) 범위 검증, InvalidParameterException throw
-- [ ] T026 [US3] Update GlobalExceptionHandler in `src/main/java/com/proximityservice/exception/GlobalExceptionHandler.java` — InvalidParameterException 시 유효 범위를 details에 포함 (e.g., `{"valid_range": "-90 ~ 90"}`)
-- [ ] T027 [US3] Create validation error test cases in `src/test/java/com/proximityservice/controller/NearbySearchControllerTest.java` — 위도 91, 경도 200, 반경 50000 각각 400 에러 응답 검증
+- [x] T025 [US3] Add input validation to NearbySearchController in `src/main/java/com/proximityservice/controller/NearbySearchController.java` — latitude(-90~90), longitude(-180~180), radius(1~20000) 범위 검증, InvalidParameterException throw
+- [x] T026 [US3] Update GlobalExceptionHandler in `src/main/java/com/proximityservice/exception/GlobalExceptionHandler.java` — InvalidParameterException 시 유효 범위를 details에 포함 (e.g., `{"valid_range": "-90 ~ 90"}`)
+- [x] T027 [US3] Create validation error test cases in `src/test/java/com/proximityservice/controller/NearbySearchControllerTest.java` — 위도 91, 경도 200, 반경 50000 각각 400 에러 응답 검증
 
 **Checkpoint**: 모든 잘못된 입력에 대해 친절한 에러 메시지 반환. 3개 User Story 모두 완료.
 
