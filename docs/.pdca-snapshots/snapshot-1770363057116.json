@@ -1,0 +1,305 @@
+{
+  "timestamp": "2026-02-06T07:30:57.115Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-06T07:28:29.389Z",
+    "activeFeatures": [
+      "proximityservice",
+      "domain",
+      "repository",
+      "config",
+      "dto",
+      "exception",
+      "service",
+      "controller"
+    ],
+    "primaryFeature": "proximityservice",
+    "features": {
+      "proximityservice": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:45:13.868Z",
+          "lastUpdated": "2026-02-06T06:45:13.868Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/ProximityServiceApplication.java"
+      },
+      "domain": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:46:19.005Z",
+          "lastUpdated": "2026-02-06T07:03:29.726Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/domain/Business.java"
+      },
+      "repository": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:46:23.284Z",
+          "lastUpdated": "2026-02-06T06:49:52.744Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/repository/BusinessGeoRepository.java"
+      },
+      "config": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:46:29.044Z",
+          "lastUpdated": "2026-02-06T06:46:29.044Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/config/RedisConfig.java"
+      },
+      "dto": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:46:43.888Z",
+          "lastUpdated": "2026-02-06T07:28:10.514Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/dto/BusinessSeedRequest.java"
+      },
+      "exception": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:46:45.626Z",
+          "lastUpdated": "2026-02-06T07:28:29.389Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/exception/GlobalExceptionHandler.java"
+      },
+      "service": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:47:36.112Z",
+          "lastUpdated": "2026-02-06T06:49:57.992Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/service/NearbySearchService.java"
+      },
+      "controller": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-06T06:47:43.778Z",
+          "lastUpdated": "2026-02-06T07:28:19.614Z"
+        },
+        "lastFile": "/Users/beplus/Desktop/etc/weeks1_yslee/src/main/java/com/proximityservice/controller/BusinessSeedController.java"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-05T23:33:20.735Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-02-06T07:28:29.389Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-02-06T06:45:13.868Z",
+        "feature": "proximityservice",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:46:19.005Z",
+        "feature": "domain",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:46:23.284Z",
+        "feature": "repository",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:46:29.045Z",
+        "feature": "config",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:46:39.185Z",
+        "feature": "repository",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:46:43.888Z",
+        "feature": "dto",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:46:45.626Z",
+        "feature": "exception",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:46:51.841Z",
+        "feature": "exception",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:47:21.305Z",
+        "feature": "dto",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:47:22.932Z",
+        "feature": "dto",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:47:24.473Z",
+        "feature": "dto",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:47:36.112Z",
+        "feature": "service",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:47:43.778Z",
+        "feature": "controller",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:47:49.795Z",
+        "feature": "service",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:47:58.212Z",
+        "feature": "controller",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:48:17.846Z",
+        "feature": "repository",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:48:32.921Z",
+        "feature": "service",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:48:54.164Z",
+        "feature": "controller",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:49:47.343Z",
+        "feature": "dto",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:49:52.744Z",
+        "feature": "repository",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:49:57.992Z",
+        "feature": "service",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T06:57:42.748Z",
+        "feature": "domain",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T07:03:29.726Z",
+        "feature": "domain",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T07:03:33.824Z",
+        "feature": "exception",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T07:28:10.515Z",
+        "feature": "dto",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T07:28:15.981Z",
+        "feature": "controller",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T07:28:19.614Z",
+        "feature": "controller",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-06T07:28:29.389Z",
+        "feature": "exception",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}

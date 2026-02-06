@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: Nearby Search API
+  description: 위치 기반 주변 사업장 검색 API (Phase 1)
+  version: 1.0.0
+
+paths:
+  /v1/search/nearby:
+    get:
+      summary: 주변 사업장 검색
+      description: 사용자 위치 기반으로 반경 내 사업장 목록을 거리순으로 반환한다.
+      parameters:
+        - name: latitude
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+            minimum: -90
+            maximum: 90
+          description: 현재 위도
+        - name: longitude
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+            minimum: -180
+            maximum: 180
+          description: 현재 경도
+        - name: radius
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 20000
+            default: 5000
+          description: 검색 반경 (미터)
+      responses:
+        '200':
+          description: 검색 성공
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbySearchResponse'
+        '400':
+          description: 잘못된 요청 파라미터
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/businesses/seed:
+    post:
+      summary: 사업장 데이터 시딩
+      description: 검색 인덱스 + DB에 사업장 데이터를 일괄 등록한다. (Phase 1 데이터 시딩용)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/BusinessSeedRequest'
+      responses:
+        '201':
+          description: 시딩 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_count:
+                    type: integer
+                    description: 등록된 사업장 수
+        '400':
+          description: 잘못된 요청 데이터
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    NearbySearchResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: 검색 결과 수
+        businesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessSearchResult'
+        message:
+          type: string
+          description: 안내 메시지 (결과 0건 시 반경 확대 안내 등)
+
+    BusinessSearchResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        distance_m:
+          type: number
+          format: double
+          description: 요청 좌표로부터의 거리 (미터)
+        category:
+          type: string
+
+    BusinessSeedRequest:
+      type: object
+      required:
+        - name
+        - address
+        - latitude
+        - longitude
+        - category
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        latitude:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+        longitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+        category:
+          type: string
+        phone:
+          type: string
+        hours:
+          type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: 에러 코드
+        message:
+          type: string
+          description: 사용자 친화적 에러 메시지
+        details:
+          type: object
+          description: 추가 에러 정보 (유효 범위 등)
