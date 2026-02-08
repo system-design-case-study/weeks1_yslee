@@ -1,5 +1,7 @@
 package com.proximityservice.repository;
 
+import java.util.Collections;
+import java.util.Set;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.data.geo.Point;
@@ -17,9 +19,11 @@ public class BusinessGeoRepository {
     private static final String GEO_KEY = "geo:businesses";
 
     private final GeoOperations<String, String> geoOps;
+    private final StringRedisTemplate redisTemplate;
 
     public BusinessGeoRepository(StringRedisTemplate redisTemplate) {
         this.geoOps = redisTemplate.opsForGeo();
+        this.redisTemplate = redisTemplate;
     }
 
     public void add(String businessId, double longitude, double latitude) {
@@ -41,5 +45,14 @@ public class BusinessGeoRepository {
 
     public void remove(String businessId) {
         geoOps.remove(GEO_KEY, businessId);
+    }
+
+    public Set<String> getAllMembers() {
+        Set<String> members = redisTemplate.opsForZSet().range(GEO_KEY, 0, -1);
+        return members != null ? members : Collections.emptySet();
+    }
+
+    public void deleteAll() {
+        redisTemplate.delete(GEO_KEY);
     }
 }

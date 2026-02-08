@@ -1,0 +1,101 @@
+openapi: 3.0.3
+info:
+  title: Proximity Service - Batch Sync API
+  description: 복구용 배치 및 정합성 검증 API
+  version: 1.0.0
+
+paths:
+  /v1/admin/sync/full:
+    post:
+      summary: 전체 동기화 배치 실행
+      description: |
+        MySQL의 전체 사업장 데이터를 기반으로 Redis 검색 인덱스를 재구축한다.
+        기존 Redis 인덱스를 초기화한 후 새로 구축한다.
+        동시에 하나의 배치만 실행 가능하다.
+      operationId: runFullSync
+      tags:
+        - Batch Sync
+      responses:
+        '200':
+          description: 배치 실행 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncBatchResult'
+        '409':
+          description: 다른 배치가 이미 실행 중
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/admin/sync/consistency-check:
+    post:
+      summary: 정합성 검증 배치 실행
+      description: |
+        MySQL과 Redis 간 데이터 정합성을 검증하고 불일치를 보정한다.
+        - 누락(MySQL에만 존재): Redis에 추가
+        - 고아(Redis에만 존재): Redis에서 제거
+        동시에 하나의 배치만 실행 가능하다.
+      operationId: runConsistencyCheck
+      tags:
+        - Batch Sync
+      responses:
+        '200':
+          description: 정합성 검증 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncBatchResult'
+        '409':
+          description: 다른 배치가 이미 실행 중
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    SyncBatchResult:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [FULL_SYNC, CONSISTENCY_CHECK]
+          description: 배치 유형
+        status:
+          type: string
+          enum: [SUCCESS, PARTIAL_FAILURE, FAILED]
+          description: 실행 결과
+        total_processed:
+          type: integer
+          description: 처리된 총 건수
+        added:
+          type: integer
+          description: Redis에 추가된 건수
+        removed:
+          type: integer
+          description: Redis에서 제거된 건수
+        errors:
+          type: integer
+          description: 오류 발생 건수
+        started_at:
+          type: string
+          format: date-time
+          description: 배치 시작 시각
+        finished_at:
+          type: string
+          format: date-time
+          description: 배치 종료 시각
+        duration_ms:
+          type: integer
+          format: int64
+          description: 소요 시간(ms)
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
