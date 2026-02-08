@@ -62,4 +62,20 @@ public class Business {
         this.phone = phone;
         this.hours = hours;
     }
+
+    public boolean update(String name, String address, Double latitude, Double longitude,
+                          String category, String phone, String hours) {
+        boolean coordinatesChanged =
+                !this.latitude.equals(latitude) || !this.longitude.equals(longitude);
+
+        this.name = name;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.category = category;
+        this.phone = phone;
+        this.hours = hours;
+
+        return coordinatesChanged;
+    }
 }
