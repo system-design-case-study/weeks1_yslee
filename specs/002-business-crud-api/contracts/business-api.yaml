@@ -1,0 +1,220 @@
+openapi: 3.0.3
+info:
+  title: Business CRUD API
+  version: 1.0.0
+  description: 사업장 관리 API (Phase 2)
+
+paths:
+  /v1/businesses:
+    post:
+      summary: 신규 사업장 등록
+      operationId: createBusiness
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessCreateRequest'
+      responses:
+        '201':
+          description: 등록 성공
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDetailResponse'
+        '400':
+          description: 입력값 검증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/businesses/{id}:
+    get:
+      summary: 사업장 상세 조회
+      operationId: getBusiness
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: 조회 성공
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDetailResponse'
+        '404':
+          description: 사업장 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    put:
+      summary: 사업장 정보 수정
+      operationId: updateBusiness
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessUpdateRequest'
+      responses:
+        '200':
+          description: 수정 성공
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDetailResponse'
+        '400':
+          description: 입력값 검증 실패
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 사업장 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      summary: 사업장 삭제
+      operationId: deleteBusiness
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: 삭제 성공
+        '404':
+          description: 사업장 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    BusinessCreateRequest:
+      type: object
+      required: [name, latitude, longitude, category]
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          example: "맛있는 식당"
+        address:
+          type: string
+          maxLength: 500
+          example: "서울시 강남구 테헤란로 123"
+        latitude:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+          example: 37.5012
+        longitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+          example: 127.0396
+        category:
+          type: string
+          enum: [korean_food, chinese_food, japanese_food, western_food, cafe, bar, convenience, pharmacy, hair_salon, gym]
+          example: "korean_food"
+        phone:
+          type: string
+          maxLength: 20
+          example: "02-1234-5678"
+        hours:
+          type: string
+          maxLength: 100
+          example: "09:00-22:00"
+
+    BusinessUpdateRequest:
+      type: object
+      required: [name, latitude, longitude, category]
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        address:
+          type: string
+          maxLength: 500
+        latitude:
+          type: number
+          format: double
+          minimum: -90
+          maximum: 90
+        longitude:
+          type: number
+          format: double
+          minimum: -180
+          maximum: 180
+        category:
+          type: string
+          enum: [korean_food, chinese_food, japanese_food, western_food, cafe, bar, convenience, pharmacy, hair_salon, gym]
+        phone:
+          type: string
+          maxLength: 20
+        hours:
+          type: string
+          maxLength: 100
+
+    BusinessDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        category:
+          type: string
+        phone:
+          type: string
+        hours:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
