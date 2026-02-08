@@ -33,6 +33,10 @@ dependencies {
     // Redis
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
+    // Retry
+    implementation("org.springframework.retry:spring-retry")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+
     // Docker Compose support
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
