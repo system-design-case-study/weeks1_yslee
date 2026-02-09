@@ -48,6 +48,14 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+tasks.named<Test>("test") {
+    useJUnitPlatform {
+        excludeTags("performance")
+    }
+}
+
+tasks.register<Test>("performanceTest") {
+    useJUnitPlatform {
+        includeTags("performance")
+    }
 }
