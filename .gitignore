@@ -28,5 +28,9 @@ Thumbs.db
 # Logs
 *.log
 
+# Monitoring data (Docker volumes)
+monitoring/grafana/data/
+monitoring/prometheus/data/
+
 # Test
 /bin/
