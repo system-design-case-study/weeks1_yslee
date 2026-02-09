@@ -24,9 +24,15 @@ public class NearbySearchService {
     private final BusinessGeoRepository geoRepository;
     private final BusinessRepository businessRepository;
 
+    private static final int DEFAULT_LIMIT = 20;
+
     public NearbySearchResponse searchNearby(double latitude, double longitude, int radius) {
+        return searchNearby(latitude, longitude, radius, DEFAULT_LIMIT);
+    }
+
+    public NearbySearchResponse searchNearby(double latitude, double longitude, int radius, int limit) {
         GeoResults<GeoLocation<String>> geoResults =
-                geoRepository.searchNearby(longitude, latitude, radius);
+                geoRepository.searchNearby(longitude, latitude, radius, limit);
 
         if (geoResults == null || geoResults.getContent().isEmpty()) {
             return new NearbySearchResponse(0, List.of(),
