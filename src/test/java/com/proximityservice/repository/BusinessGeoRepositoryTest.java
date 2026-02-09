@@ -47,7 +47,7 @@ class BusinessGeoRepositoryTest {
         geoRepository.add("biz-2", 127.0380, 37.5025);
 
         GeoResults<GeoLocation<String>> results =
-                geoRepository.searchNearby(127.0396, 37.5012, 1000);
+                geoRepository.searchNearby(127.0396, 37.5012, 1000, 20);
 
         assertThat(results).isNotNull();
         assertThat(results.getContent()).hasSize(2);
@@ -59,7 +59,7 @@ class BusinessGeoRepositoryTest {
         geoRepository.add("biz-1", 127.0396, 37.5012);
 
         GeoResults<GeoLocation<String>> results =
-                geoRepository.searchNearby(126.0, 36.0, 100);
+                geoRepository.searchNearby(126.0, 36.0, 100, 20);
 
         assertThat(results).isNotNull();
         assertThat(results.getContent()).isEmpty();
@@ -71,7 +71,7 @@ class BusinessGeoRepositoryTest {
         geoRepository.add("near", 127.0396, 37.5013);
 
         GeoResults<GeoLocation<String>> results =
-                geoRepository.searchNearby(127.0396, 37.5012, 5000);
+                geoRepository.searchNearby(127.0396, 37.5012, 5000, 20);
 
         assertThat(results.getContent()).hasSizeGreaterThanOrEqualTo(2);
         GeoResult<GeoLocation<String>> first = results.getContent().get(0);
@@ -86,7 +86,7 @@ class BusinessGeoRepositoryTest {
         geoRepository.remove("biz-1");
 
         GeoResults<GeoLocation<String>> results =
-                geoRepository.searchNearby(127.0396, 37.5012, 1000);
+                geoRepository.searchNearby(127.0396, 37.5012, 1000, 20);
 
         assertThat(results).isNotNull();
         assertThat(results.getContent()).isEmpty();

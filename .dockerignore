@@ -9,3 +9,5 @@ build/
 docs/
 specs/
 .specify/
+k6/
+monitoring/

@@ -31,7 +31,7 @@ public class BusinessGeoRepository {
     }
 
     public GeoResults<GeoLocation<String>> searchNearby(double longitude, double latitude,
-                                                         double radiusMeters) {
+                                                         double radiusMeters, int limit) {
         return geoOps.search(
                 GEO_KEY,
                 GeoReference.fromCoordinate(longitude, latitude),
@@ -40,6 +40,7 @@ public class BusinessGeoRepository {
                         .includeDistance()
                         .includeCoordinates()
                         .sortAscending()
+                        .limit(limit)
         );
     }
 

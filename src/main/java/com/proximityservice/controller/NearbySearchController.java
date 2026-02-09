@@ -21,15 +21,22 @@ public class NearbySearchController {
     public ResponseEntity<NearbySearchResponse> searchNearby(
             @RequestParam double latitude,
             @RequestParam double longitude,
-            @RequestParam(defaultValue = "5000") int radius) {
+            @RequestParam(defaultValue = "5000") int radius,
+            @RequestParam(defaultValue = "20") int limit) {
 
-        validateParameters(latitude, longitude, radius);
+        validateParameters(latitude, longitude, radius, limit);
 
-        NearbySearchResponse response = searchService.searchNearby(latitude, longitude, radius);
+        NearbySearchResponse response = searchService.searchNearby(latitude, longitude, radius, limit);
         return ResponseEntity.ok(response);
     }
 
-    private void validateParameters(double latitude, double longitude, int radius) {
+    private void validateParameters(double latitude, double longitude, int radius, int limit) {
+        if (limit < 1 || limit > 50) {
+            throw new InvalidParameterException(
+                    "결과 수 제한은 1에서 50 사이여야 합니다.",
+                    Map.of("field", "limit", "valid_range", "1 ~ 50", "received", limit)
+            );
+        }
         if (latitude < -90 || latitude > 90) {
             throw new InvalidParameterException(
                     "위도는 -90에서 90 사이여야 합니다.",
